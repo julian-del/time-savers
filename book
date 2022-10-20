@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+# Launches a bookfinder.com and amazon.com.au search window
+
+import webbrowser
+import sys
+import pyperclip
+
+if len(sys.argv) > 1:
+    # get book author from command line
+    author = sys.argv[1]
+    # get book title from command line
+    title = sys.argv[2]
+
+    webbrowser.open('https://www.bookfinder.com/search/?author=' + author + '&title=' + title + '&lang=en&isbn=&new_used=*&destination=au&currency=AUD&mode=basic&st=sr&ac=qr')
+    webbrowser.open('https://www.amazon.com.au/s?k=' + author + '+' + title)
+    webbrowser.open('https://www.bookdepository.com/search?searchTerm=' + author + '+' + title)
+else:
+    # get title from clipboard
+    title = pyperclip.paste()
+
+    webbrowser.open('https://www.bookfinder.com/search/?author=&title=' + title + '&lang=en&isbn=&new_used=*&destination=au&currency=AUD&mode=basic&st=sr&ac=qr')
+    webbrowser.open('https://www.amazon.com.au/s?k=' + title)
+    webbrowser.open('https://www.bookdepository.com/search?searchTerm=' + title)

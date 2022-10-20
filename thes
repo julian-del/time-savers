@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+# Launches thesaurus.com and searches for synonyms of word in CLI argument or on clipboard
+
+import webbrowser, sys, pyperclip
+from selenium import webdriver
+
+if len(sys.argv) > 1:
+	# get word from command line
+	word = sys.argv[1]
+else:
+	# get word from clipboard
+	word = pyperclip.paste()
+
+webbrowser.open('https://www.thesaurus.com/browse/' + word)
